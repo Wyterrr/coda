@@ -6,9 +6,10 @@ from fastapi import FastAPI, File, HTTPException, UploadFile
 from pydantic import BaseModel
 from sqlalchemy import create_engine, text
 
+from db_config import get_database_url
 from predictor import predict_iris
 
-DATABASE_URL = os.environ["DATABASE_URL"]
+DATABASE_URL = get_database_url()
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 S3_ENDPOINT_URL = os.getenv("S3_ENDPOINT_URL") or None
