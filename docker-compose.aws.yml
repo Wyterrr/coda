@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - "8000:8000"
-    env_file:
-      - .env
+    environment:
+      - DB_SECRET_NAME=POSTGRES
+      - S3_BUCKET=coda-wewene-tp
+      - S3_REGION=us-east-1
     restart: unless-stopped
